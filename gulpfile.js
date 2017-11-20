@@ -32,7 +32,7 @@ var cdn1 = config.cdn[1];
  */
  
 gulp.task('mini-html', function() {
-    return gulp.src('src/html/**.html')
+    return gulp.src('src/html/**')
         .pipe(replace('http://', '//'))
         .pipe(replace('https://', '//'))
         .pipe(replace('projeact', cdn1)) //其他的域名
@@ -51,10 +51,10 @@ gulp.task('mini-html', function() {
             minifyJS: true, //压缩页面JS
             minifyCSS: true //压缩页面CSS                          
         }))
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: 'src/html/include'
-          }))
+        // .pipe(fileinclude({
+        //     prefix: '@@',
+        //     basepath: 'src/html/include'
+        //   }))
         .pipe(gulp.dest('dist/html'))
 })
 
